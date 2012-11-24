@@ -5,6 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+puts 'CREATING POLL WORKFLOW STATES'
+PollWorkflowState.create([
+  { :description => 'Start' },
+  { :description => 'Published' },
+  { :description => 'Closed' }
+], :without_protection => true)
+
 puts 'CREATING ROLES'
 Role.create([
   { :name => 'admin' }, 
@@ -18,3 +26,5 @@ user2 = User.create! :name => 'Second User', :email => 'user2@example.com', :pas
 puts 'New user created: ' << user2.name
 user.add_role :admin
 user2.add_role :VIP
+
+

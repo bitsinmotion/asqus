@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @official.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @official.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_official_path(@official) %> |
+<%= link_to 'Back', officials_path %>

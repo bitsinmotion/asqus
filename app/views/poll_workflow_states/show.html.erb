@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @poll_workflow_state.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_poll_workflow_state_path(@poll_workflow_state) %> |
+<%= link_to 'Back', poll_workflow_states_path %>

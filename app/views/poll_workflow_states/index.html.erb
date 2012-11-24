@@ -1,0 +1,23 @@
+<h1>Listing poll_workflow_states</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @poll_workflow_states.each do |poll_workflow_state| %>
+  <tr>
+    <td><%= poll_workflow_state.description %></td>
+    <td><%= link_to 'Show', poll_workflow_state %></td>
+    <td><%= link_to 'Edit', edit_poll_workflow_state_path(poll_workflow_state) %></td>
+    <td><%= link_to 'Destroy', poll_workflow_state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Poll workflow state', new_poll_workflow_state_path %>
