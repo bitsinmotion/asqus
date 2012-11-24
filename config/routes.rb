@@ -1,4 +1,7 @@
 Asqus::Application.routes.draw do
+  resources :officials
+
+
   authenticated :user do
     root :to => 'home#index'
   end
