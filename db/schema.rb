@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124062217) do
+ActiveRecord::Schema.define(:version => 20121125014156) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(:version => 20121124062217) do
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "political_entities", :force => true do |t|
+    t.string   "name"
+    t.integer  "political_entity_type_id"
+    t.integer  "parent_political_entity_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "political_entity_types", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "poll_workflow_states", :force => true do |t|

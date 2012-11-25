@@ -13,6 +13,17 @@ PollWorkflowState.create([
   { :description => 'Closed' }
 ], :without_protection => true)
 
+puts 'CREATING POLITICAL ENTITY TYPES'
+PoliticalEntityType.create([
+  { :description => 'Country' },
+  { :description => 'State' },
+  { :description => 'County' },
+  { :description => 'Municipality' },
+  { :description => 'Congressional District' },
+  { :description => 'State House District' },
+  { :description => 'State Senate District' }
+], :without_protection => true)
+
 puts 'CREATING ROLES'
 Role.create([
   { :name => 'admin' }, 

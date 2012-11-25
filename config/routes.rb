@@ -1,4 +1,7 @@
 Asqus::Application.routes.draw do
+  resources :political_entities
+
+
   resources :poll_workflow_states
 
 

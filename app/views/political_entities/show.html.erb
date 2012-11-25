@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @political_entity.name %>
+</p>
+
+<p>
+  <b>Political entity type:</b>
+  <%= @political_entity.political_entity_type_id %>
+</p>
+
+<p>
+  <b>Parent political entity:</b>
+  <%= @political_entity.parent_political_entity_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_political_entity_path(@political_entity) %> |
+<%= link_to 'Back', political_entities_path %>

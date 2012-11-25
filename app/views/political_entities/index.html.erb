@@ -1,0 +1,27 @@
+<h1>Listing political_entities</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Political entity type</th>
+    <th>Parent political entity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @political_entities.each do |political_entity| %>
+  <tr>
+    <td><%= political_entity.name %></td>
+    <td><%= political_entity.political_entity_type_id %></td>
+    <td><%= political_entity.parent_political_entity_id %></td>
+    <td><%= link_to 'Show', political_entity %></td>
+    <td><%= link_to 'Edit', edit_political_entity_path(political_entity) %></td>
+    <td><%= link_to 'Destroy', political_entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Political entity', new_political_entity_path %>

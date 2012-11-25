@@ -1,0 +1,2 @@
+module PoliticalEntitiesHelper
+end
