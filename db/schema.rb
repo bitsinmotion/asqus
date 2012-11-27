@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126094115) do
+ActiveRecord::Schema.define(:version => 20121127091629) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -81,6 +81,39 @@ ActiveRecord::Schema.define(:version => 20121126094115) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "poll_answers", :force => true do |t|
+    t.string   "text"
+    t.integer  "poll_question_id",                    :null => false
+    t.integer  "ordinal",                             :null => false
+    t.boolean  "free_response",    :default => false, :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "poll_answers", ["id", "ordinal"], :name => "index_poll_answers_on_id_and_ordinal", :unique => true
+  add_index "poll_answers", ["poll_question_id"], :name => "index_poll_answers_on_poll_question_id"
+
+  create_table "poll_questions", :force => true do |t|
+    t.string   "text",       :null => false
+    t.integer  "poll_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "poll_questions", ["poll_id"], :name => "index_poll_questions_on_poll_id"
+
+  create_table "poll_responses", :force => true do |t|
+    t.integer  "user_id",          :null => false
+    t.integer  "poll_question_id", :null => false
+    t.integer  "ordinal",          :null => false
+    t.string   "free_response"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "poll_responses", ["poll_question_id"], :name => "index_poll_responses_on_poll_question_id"
+  add_index "poll_responses", ["user_id", "poll_question_id"], :name => "index_poll_responses_on_user_id_and_poll_question_id", :unique => true
+
   create_table "poll_workflow_states", :force => true do |t|
     t.string   "description", :null => false
     t.datetime "created_at",  :null => false
@@ -129,25 +162,30 @@ ActiveRecord::Schema.define(:version => 20121126094115) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                     :default => "", :null => false
+    t.string   "encrypted_password",        :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",             :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "name"
     t.string   "address1"
     t.string   "address2"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.integer  "congressional_district"
+    t.integer  "state_id"
+    t.integer  "municipality_id"
+    t.integer  "county_id"
+    t.integer  "congressional_district_id"
+    t.integer  "state_senate_district_id"
+    t.integer  "state_house_district_id"
     t.string   "current_location"
     t.date     "birth_date"
     t.string   "sex"

@@ -1,0 +1,29 @@
+<h1>Listing poll_answers</h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th>Poll question</th>
+    <th>Ordinal</th>
+    <th>Free response</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @poll_answers.each do |poll_answer| %>
+  <tr>
+    <td><%= poll_answer.text %></td>
+    <td><%= poll_answer.poll_question_id %></td>
+    <td><%= poll_answer.ordinal %></td>
+    <td><%= poll_answer.free_response %></td>
+    <td><%= link_to 'Show', poll_answer %></td>
+    <td><%= link_to 'Edit', edit_poll_answer_path(poll_answer) %></td>
+    <td><%= link_to 'Destroy', poll_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Poll answer', new_poll_answer_path %>

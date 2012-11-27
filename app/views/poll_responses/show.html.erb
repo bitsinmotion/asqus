@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @poll_response.user_id %>
+</p>
+
+<p>
+  <b>Poll:</b>
+  <%= @poll_response.poll_id %>
+</p>
+
+<p>
+  <b>Poll question:</b>
+  <%= @poll_response.poll_question_id %>
+</p>
+
+<p>
+  <b>Ordinal:</b>
+  <%= @poll_response.ordinal %>
+</p>
+
+<p>
+  <b>Free response:</b>
+  <%= @poll_response.free_response %>
+</p>
+
+
+<%= link_to 'Edit', edit_poll_response_path(@poll_response) %> |
+<%= link_to 'Back', poll_responses_path %>

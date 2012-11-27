@@ -1,4 +1,13 @@
 Asqus::Application.routes.draw do
+  resources :poll_responses
+
+
+  resources :poll_answers
+
+
+  resources :poll_questions
+
+
   resources :official_administrators
 
 
