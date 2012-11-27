@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Official:</b>
+  <%= @official_administrator.official_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @official_administrator.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_official_administrator_path(@official_administrator) %> |
+<%= link_to 'Back', official_administrators_path %>

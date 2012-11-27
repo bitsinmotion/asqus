@@ -1,7 +1,7 @@
 class CreatePollWorkflowStates < ActiveRecord::Migration
   def change
     create_table :poll_workflow_states do |t|
-      t.string :description
+      t.string :description, :null => false
 
       t.timestamps
     end

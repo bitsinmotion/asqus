@@ -1,0 +1,2 @@
+class OfficeTypesController < ApplicationController
+end

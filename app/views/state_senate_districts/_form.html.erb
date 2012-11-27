@@ -1,0 +1,12 @@
+<%= simple_form_for(@state_senate_district) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :district_number %>
+    <%= f.input :state_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

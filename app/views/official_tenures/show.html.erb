@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Official:</b>
+  <%= @official_tenure.official_id %>
+</p>
+
+<p>
+  <b>Office:</b>
+  <%= @official_tenure.office_id %>
+</p>
+
+<p>
+  <b>From date:</b>
+  <%= @official_tenure.from_date %>
+</p>
+
+<p>
+  <b>To date:</b>
+  <%= @official_tenure.to_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_official_tenure_path(@official_tenure) %> |
+<%= link_to 'Back', official_tenures_path %>

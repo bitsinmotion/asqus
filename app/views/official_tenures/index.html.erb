@@ -1,0 +1,29 @@
+<h1>Listing official_tenures</h1>
+
+<table>
+  <tr>
+    <th>Official</th>
+    <th>Office</th>
+    <th>From date</th>
+    <th>To date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @official_tenures.each do |official_tenure| %>
+  <tr>
+    <td><%= official_tenure.official_id %></td>
+    <td><%= official_tenure.office_id %></td>
+    <td><%= official_tenure.from_date %></td>
+    <td><%= official_tenure.to_date %></td>
+    <td><%= link_to 'Show', official_tenure %></td>
+    <td><%= link_to 'Edit', edit_official_tenure_path(official_tenure) %></td>
+    <td><%= link_to 'Destroy', official_tenure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Official tenure', new_official_tenure_path %>

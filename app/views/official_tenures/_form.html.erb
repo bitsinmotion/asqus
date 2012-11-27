@@ -1,0 +1,14 @@
+<%= simple_form_for(@official_tenure) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :official_id %>
+    <%= f.input :office_id %>
+    <%= f.input :from_date %>
+    <%= f.input :to_date %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

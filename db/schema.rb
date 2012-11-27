@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125014156) do
+ActiveRecord::Schema.define(:version => 20121126094115) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -22,37 +22,75 @@ ActiveRecord::Schema.define(:version => 20121125014156) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "congressional_districts", :force => true do |t|
+    t.integer  "district_number", :null => false
+    t.integer  "state_id",        :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "counties", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "state_id",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "municipalities", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "state_id",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "office_types", :force => true do |t|
+    t.string   "description", :null => false
+    t.string   "polity_type", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "offices", :force => true do |t|
+    t.string   "name",        :null => false
+    t.integer  "polity_id",   :null => false
+    t.string   "polity_type", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "official_administrators", :force => true do |t|
+    t.integer  "official_id", :null => false
+    t.integer  "user_id",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "official_tenures", :force => true do |t|
+    t.integer  "official_id", :null => false
+    t.integer  "office_id",   :null => false
+    t.date     "from_date",   :null => false
+    t.date     "to_date",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "officials", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "political_entities", :force => true do |t|
-    t.string   "name"
-    t.integer  "political_entity_type_id"
-    t.integer  "parent_political_entity_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-  end
-
-  create_table "political_entity_types", :force => true do |t|
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "poll_workflow_states", :force => true do |t|
-    t.string   "description"
+    t.string   "description", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "polls", :force => true do |t|
-    t.string   "title"
+    t.string   "title",                                 :null => false
     t.text     "body"
-    t.integer  "official_id"
+    t.integer  "official_id",                           :null => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
     t.integer  "poll_workflow_state_id", :default => 0, :null => false
@@ -69,6 +107,27 @@ ActiveRecord::Schema.define(:version => 20121125014156) do
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
+  create_table "state_house_districts", :force => true do |t|
+    t.integer  "district_number", :null => false
+    t.integer  "state_id",        :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "state_senate_districts", :force => true do |t|
+    t.integer  "district_number", :null => false
+    t.integer  "state_id",        :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "states", :force => true do |t|
+    t.string   "name",         :null => false
+    t.string   "abbreviation", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -83,6 +142,12 @@ ActiveRecord::Schema.define(:version => 20121125014156) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.integer  "congressional_district"
     t.string   "current_location"
     t.date     "birth_date"
     t.string   "sex"

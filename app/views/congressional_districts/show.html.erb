@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>District number:</b>
+  <%= @congressional_district.district_number %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @congressional_district.state_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_congressional_district_path(@congressional_district) %> |
+<%= link_to 'Back', congressional_districts_path %>

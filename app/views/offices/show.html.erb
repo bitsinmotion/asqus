@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @office.name %>
+</p>
+
+<p>
+  <b>Polity:</b>
+  <%= @office.polity_id %>
+</p>
+
+<p>
+  <b>Polity type:</b>
+  <%= @office.polity_type %>
+</p>
+
+<%= link_to 'Edit', edit_office_path(@office) %> |
+<%= link_to 'Back', offices_path %>

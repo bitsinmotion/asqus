@@ -1,9 +1,9 @@
 class CreatePolls < ActiveRecord::Migration
   def change
     create_table :polls do |t|
-      t.string :title
+      t.string :title, :null => false
       t.text :body
-      t.integer :official_id
+      t.integer :official_id, :null => false
       t.timestamps
     end
   end

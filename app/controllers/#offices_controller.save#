@@ -1,0 +1,11 @@
+class OfficesController < ApplicationController
+  belongs_to :polity, :polymorphic => true
+
+
+
+  def index 
+    @polity = find_polity
+    @offices = @polity.offices
+  end
+
+end

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>District number:</b>
+  <%= @state_house_district.district_number %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @state_house_district.state_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_state_house_district_path(@state_house_district) %> |
+<%= link_to 'Back', state_house_districts_path %>

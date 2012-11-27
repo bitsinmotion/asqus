@@ -1,0 +1,25 @@
+<h1>Listing congressional_districts</h1>
+
+<table>
+  <tr>
+    <th>District number</th>
+    <th>State</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @congressional_districts.each do |congressional_district| %>
+  <tr>
+    <td><%= congressional_district.district_number %></td>
+    <td><%= congressional_district.state_id %></td>
+    <td><%= link_to 'Show', congressional_district %></td>
+    <td><%= link_to 'Edit', edit_congressional_district_path(congressional_district) %></td>
+    <td><%= link_to 'Destroy', congressional_district, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Congressional district', new_congressional_district_path %>
