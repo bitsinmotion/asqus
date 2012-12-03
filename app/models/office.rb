@@ -1,6 +1,7 @@
 class Office < ActiveRecord::Base
   belongs_to :polity, :polymorphic => true
   has_many :officials, :through => :official_tenures
+  has_many :users, :through => :user_groups, :as => :group
 
   attr_accessible :name, :polity_id, :polity_type, :timestamps
 

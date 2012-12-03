@@ -11,16 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127091629) do
+ActiveRecord::Schema.define(:version => 20121202054737) do
 
   create_table "authentications", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
+    t.integer  "user_id",    :null => false
+    t.string   "provider",   :null => false
+    t.string   "uid",        :null => false
+    t.string   "token",      :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "authentications", ["token"], :name => "index_authentications_on_token"
+  add_index "authentications", ["uid"], :name => "index_authentications_on_uid"
+  add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
 
   create_table "congressional_districts", :force => true do |t|
     t.integer  "district_number", :null => false
@@ -29,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20121127091629) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "congressional_districts", ["state_id", "district_number"], :name => "index_congressional_districts_on_state_id_and_district_number", :unique => true
+
   create_table "counties", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "state_id",   :null => false
@@ -36,12 +42,16 @@ ActiveRecord::Schema.define(:version => 20121127091629) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "counties", ["state_id", "name"], :name => "index_counties_on_state_id_and_name", :unique => true
+
   create_table "municipalities", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "state_id",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "municipalities", ["state_id", "name"], :name => "index_municipalities_on_state_id_and_name", :unique => true
 
   create_table "office_types", :force => true do |t|
     t.string   "description", :null => false
@@ -58,13 +68,6 @@ ActiveRecord::Schema.define(:version => 20121127091629) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "official_administrators", :force => true do |t|
-    t.integer  "official_id", :null => false
-    t.integer  "user_id",     :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "official_tenures", :force => true do |t|
     t.integer  "official_id", :null => false
     t.integer  "office_id",   :null => false
@@ -73,6 +76,11 @@ ActiveRecord::Schema.define(:version => 20121127091629) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "official_tenures", ["from_date"], :name => "index_official_tenures_on_from_date"
+  add_index "official_tenures", ["office_id"], :name => "index_official_tenures_on_office_id"
+  add_index "official_tenures", ["official_id"], :name => "index_official_tenures_on_official_id"
+  add_index "official_tenures", ["to_date"], :name => "index_official_tenures_on_to_date"
 
   create_table "officials", :force => true do |t|
     t.string   "name",       :null => false
@@ -94,13 +102,14 @@ ActiveRecord::Schema.define(:version => 20121127091629) do
   add_index "poll_answers", ["poll_question_id"], :name => "index_poll_answers_on_poll_question_id"
 
   create_table "poll_questions", :force => true do |t|
-    t.string   "text",       :null => false
-    t.integer  "poll_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "poll_id",                   :null => false
+    t.integer  "ordinal",    :default => 0, :null => false
+    t.string   "text",                      :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
-  add_index "poll_questions", ["poll_id"], :name => "index_poll_questions_on_poll_id"
+  add_index "poll_questions", ["poll_id", "ordinal"], :name => "index_poll_questions_on_poll_id_and_ordinal", :unique => true
 
   create_table "poll_responses", :force => true do |t|
     t.integer  "user_id",          :null => false
@@ -123,11 +132,16 @@ ActiveRecord::Schema.define(:version => 20121127091629) do
   create_table "polls", :force => true do |t|
     t.string   "title",                                 :null => false
     t.text     "body"
-    t.integer  "official_id",                           :null => false
+    t.datetime "start_time",                            :null => false
+    t.datetime "end_time",                              :null => false
+    t.integer  "poller_id",                             :null => false
+    t.string   "poller_type",                           :null => false
+    t.integer  "poll_workflow_state_id", :default => 0, :null => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
-    t.integer  "poll_workflow_state_id", :default => 0, :null => false
   end
+
+  add_index "polls", ["poller_type", "poller_id"], :name => "index_polls_on_poller_type_and_poller_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -147,6 +161,8 @@ ActiveRecord::Schema.define(:version => 20121127091629) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "state_house_districts", ["state_id", "district_number"], :name => "index_state_house_districts_on_state_id_and_district_number", :unique => true
+
   create_table "state_senate_districts", :force => true do |t|
     t.integer  "district_number", :null => false
     t.integer  "state_id",        :null => false
@@ -154,12 +170,29 @@ ActiveRecord::Schema.define(:version => 20121127091629) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "state_senate_districts", ["state_id", "district_number"], :name => "index_state_senate_districts_on_state_id_and_district_number", :unique => true
+
   create_table "states", :force => true do |t|
     t.string   "name",         :null => false
     t.string   "abbreviation", :null => false
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "states", ["abbreviation"], :name => "index_states_on_abbreviation", :unique => true
+  add_index "states", ["name"], :name => "index_states_on_name", :unique => true
+
+  create_table "user_groups", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.string   "group_type"
+    t.string   "role"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_groups", ["group_id"], :name => "index_user_groups_on_group_id"
+  add_index "user_groups", ["user_id", "group_id", "group_type"], :name => "index_user_groups_on_user_id_and_group_id_and_group_type", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                     :default => "", :null => false

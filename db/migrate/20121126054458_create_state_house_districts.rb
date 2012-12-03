@@ -6,5 +6,7 @@ class CreateStateHouseDistricts < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :state_house_districts, [:state_id, :district_number], :unique => true
+
   end
 end

@@ -6,5 +6,7 @@ class CreateStates < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :states, :name, :unique => true
+    add_index :states, :abbreviation, :unique => true
   end
 end

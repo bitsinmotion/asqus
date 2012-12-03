@@ -1,4 +1,7 @@
 Asqus::Application.routes.draw do
+  resources :user_groups
+
+
   resources :poll_responses
 
 
@@ -6,9 +9,6 @@ Asqus::Application.routes.draw do
 
 
   resources :poll_questions
-
-
-  resources :official_administrators
 
 
   resources :official_tenures
@@ -41,11 +41,13 @@ Asqus::Application.routes.draw do
 
  
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'home#home'
   end
   root :to => "home#index"
+
   devise_for :users
   resources :users
+
   match '/auth/:provider/callback' => 'authentications#create'
 
 end

@@ -6,5 +6,6 @@ class CreateCongressionalDistricts < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :congressional_districts, [:state_id, :district_number], :unique => true
   end
 end

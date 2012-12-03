@@ -8,5 +8,9 @@ class CreateOfficialTenures < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :official_tenures, :office_id
+    add_index :official_tenures, :official_id
+    add_index :official_tenures, :from_date
+    add_index :official_tenures, :to_date
   end
 end
