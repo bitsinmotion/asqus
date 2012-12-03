@@ -4,7 +4,7 @@ class CreateUserGroups < ActiveRecord::Migration
       t.integer :user_id, :null => false
       t.integer :group_id, :null => false
       t.string :group_type, :null => false
-      t.string :role, :null => false, :default 'member'
+      t.string :role, :null => false, :default => 'member'
 
       t.timestamps
     end

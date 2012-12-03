@@ -183,12 +183,12 @@ ActiveRecord::Schema.define(:version => 20121202054737) do
   add_index "states", ["name"], :name => "index_states_on_name", :unique => true
 
   create_table "user_groups", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.string   "group_type"
-    t.string   "role"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id",                          :null => false
+    t.integer  "group_id",                         :null => false
+    t.string   "group_type",                       :null => false
+    t.string   "role",       :default => "member", :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "user_groups", ["group_id"], :name => "index_user_groups_on_group_id"
