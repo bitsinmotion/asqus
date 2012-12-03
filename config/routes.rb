@@ -49,5 +49,7 @@ Asqus::Application.routes.draw do
   resources :users
 
   match '/auth/:provider/callback' => 'authentications#create'
+  resources :authentications, :only => [:index,:create,:destroy]
+  match '/auth/failure' => 'authentications#auth_failure'
 
 end

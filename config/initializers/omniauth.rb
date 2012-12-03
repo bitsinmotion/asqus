@@ -3,4 +3,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
  
   # To do: add twitter and ?
 
+
+  # We shouldn't have to do this, but for some reason oauth failures aren't being handled correctly
+  # in debug mode (they are supposed to call the "failure" action of the same controller.
+ 
+  OmniAuth.config.on_failure = AuthenticationsController.action(:oauth_failure)
 end
