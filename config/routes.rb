@@ -1,11 +1,23 @@
 Asqus::Application.routes.draw do
+  resources :issues
+
+
+  resources :nations
+
+
+  resources :poll_options
+
+
+  resources :quick_poll_options
+
+
+  resources :quick_polls
+
+
   resources :user_groups
 
 
   resources :poll_responses
-
-
-  resources :poll_answers
 
 
   resources :poll_questions
@@ -27,9 +39,6 @@ Asqus::Application.routes.draw do
 
 
   resources :congressional_districts
-
-
-  resources :states
 
 
   resources :municipalities
