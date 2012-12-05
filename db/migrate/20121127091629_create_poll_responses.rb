@@ -3,7 +3,7 @@ class CreatePollResponses < ActiveRecord::Migration
     create_table :poll_responses do |t|
       t.integer :user_id, :null => false
       t.integer :poll_question_id, :null => false
-      t.integer :ordinal, :null => false
+      t.integer :value, :null => false
       t.string :free_response
 
       t.timestamps

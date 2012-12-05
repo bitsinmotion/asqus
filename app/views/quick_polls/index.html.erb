@@ -1,0 +1,35 @@
+<h1>Listing quick_polls</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Poller</th>
+    <th>Poller type</th>
+    <th>Poll workflow state</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @quick_polls.each do |quick_poll| %>
+  <tr>
+    <td><%= quick_poll.title %></td>
+    <td><%= quick_poll.body %></td>
+    <td><%= quick_poll.start_time %></td>
+    <td><%= quick_poll.end_time %></td>
+    <td><%= quick_poll.poller_id %></td>
+    <td><%= quick_poll.poller_type %></td>
+    <td><%= quick_poll.poll_workflow_state %></td>
+    <td><%= link_to 'Show', quick_poll %></td>
+    <td><%= link_to 'Edit', edit_quick_poll_path(quick_poll) %></td>
+    <td><%= link_to 'Destroy', quick_poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Quick poll', new_quick_poll_path %>

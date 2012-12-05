@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @quick_poll_option.text %>
+</p>
+
+<p>
+  <b>Quick poll:</b>
+  <%= @quick_poll_option.quick_poll_id %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @quick_poll_option.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_quick_poll_option_path(@quick_poll_option) %> |
+<%= link_to 'Back', quick_poll_options_path %>

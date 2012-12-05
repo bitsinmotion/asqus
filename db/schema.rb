@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202054737) do
+ActiveRecord::Schema.define(:version => 20121205042406) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(:version => 20121202054737) do
 
   add_index "counties", ["state_id", "name"], :name => "index_counties_on_state_id_and_name", :unique => true
 
+  create_table "issues", :force => true do |t|
+    t.string   "title"
+    t.string   "poller_type"
+    t.integer  "poller_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "issues", ["poller_type", "poller_id", "title"], :name => "index_issues_on_poller_type_and_poller_id_and_title", :unique => true
+
   create_table "municipalities", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "state_id",   :null => false
@@ -52,6 +62,12 @@ ActiveRecord::Schema.define(:version => 20121202054737) do
   end
 
   add_index "municipalities", ["state_id", "name"], :name => "index_municipalities_on_state_id_and_name", :unique => true
+
+  create_table "nations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "office_types", :force => true do |t|
     t.string   "description", :null => false
@@ -89,17 +105,15 @@ ActiveRecord::Schema.define(:version => 20121202054737) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "poll_answers", :force => true do |t|
+  create_table "poll_options", :force => true do |t|
     t.string   "text"
-    t.integer  "poll_question_id",                    :null => false
-    t.integer  "ordinal",                             :null => false
-    t.boolean  "free_response",    :default => false, :null => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.integer  "poll_question_id"
+    t.integer  "value"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
-  add_index "poll_answers", ["id", "ordinal"], :name => "index_poll_answers_on_id_and_ordinal", :unique => true
-  add_index "poll_answers", ["poll_question_id"], :name => "index_poll_answers_on_poll_question_id"
+  add_index "poll_options", ["poll_question_id", "value"], :name => "index_poll_options_on_poll_question_id_and_value", :unique => true
 
   create_table "poll_questions", :force => true do |t|
     t.integer  "poll_id",                   :null => false
@@ -114,7 +128,7 @@ ActiveRecord::Schema.define(:version => 20121202054737) do
   create_table "poll_responses", :force => true do |t|
     t.integer  "user_id",          :null => false
     t.integer  "poll_question_id", :null => false
-    t.integer  "ordinal",          :null => false
+    t.integer  "value",            :null => false
     t.string   "free_response"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
@@ -134,14 +148,40 @@ ActiveRecord::Schema.define(:version => 20121202054737) do
     t.text     "body"
     t.datetime "start_time",                            :null => false
     t.datetime "end_time",                              :null => false
-    t.integer  "poller_id",                             :null => false
-    t.string   "poller_type",                           :null => false
+    t.integer  "issue_id",                              :null => false
     t.integer  "poll_workflow_state_id", :default => 0, :null => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
   end
 
-  add_index "polls", ["poller_type", "poller_id"], :name => "index_polls_on_poller_type_and_poller_id"
+  add_index "polls", ["end_time"], :name => "index_polls_on_end_time"
+  add_index "polls", ["issue_id"], :name => "index_polls_on_issue_id"
+  add_index "polls", ["start_time"], :name => "index_polls_on_start_time"
+
+  create_table "quick_poll_options", :force => true do |t|
+    t.string   "text"
+    t.integer  "quick_poll_id"
+    t.integer  "value"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "quick_poll_options", ["quick_poll_id", "value"], :name => "index_quick_poll_options_on_quick_poll_id_and_value", :unique => true
+
+  create_table "quick_polls", :force => true do |t|
+    t.string   "title",                              :null => false
+    t.text     "body"
+    t.datetime "start_time",                         :null => false
+    t.datetime "end_time",                           :null => false
+    t.integer  "issue_id",                           :null => false
+    t.integer  "poll_workflow_state", :default => 0, :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "quick_polls", ["end_time"], :name => "index_quick_polls_on_end_time"
+  add_index "quick_polls", ["issue_id"], :name => "index_quick_polls_on_issue_id"
+  add_index "quick_polls", ["start_time"], :name => "index_quick_polls_on_start_time"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -181,6 +221,18 @@ ActiveRecord::Schema.define(:version => 20121202054737) do
 
   add_index "states", ["abbreviation"], :name => "index_states_on_abbreviation", :unique => true
   add_index "states", ["name"], :name => "index_states_on_name", :unique => true
+
+  create_table "tags", :force => true do |t|
+    t.string   "tag"
+    t.string   "context"
+    t.string   "taggable_type"
+    t.integer  "taggable_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "tags", ["tag", "context", "taggable_type", "taggable_id"], :name => "index_tags_on_tag_and_context_and_taggable_type_and_taggable_id", :unique => true
+  add_index "tags", ["taggable_type", "taggable_id"], :name => "index_tags_on_taggable_type_and_taggable_id"
 
   create_table "user_groups", :force => true do |t|
     t.integer  "user_id",                          :null => false

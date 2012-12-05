@@ -1,0 +1,14 @@
+<%= simple_form_for(@tag) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :tag %>
+    <%= f.input :context %>
+    <%= f.input :taggable_type %>
+    <%= f.input :taggable_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

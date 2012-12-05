@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @quick_poll.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @quick_poll.body %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @quick_poll.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @quick_poll.end_time %>
+</p>
+
+<p>
+  <b>Poller:</b>
+  <%= @quick_poll.poller_id %>
+</p>
+
+<p>
+  <b>Poller type:</b>
+  <%= @quick_poll.poller_type %>
+</p>
+
+<p>
+  <b>Poll workflow state:</b>
+  <%= @quick_poll.poll_workflow_state %>
+</p>
+
+
+<%= link_to 'Edit', edit_quick_poll_path(@quick_poll) %> |
+<%= link_to 'Back', quick_polls_path %>

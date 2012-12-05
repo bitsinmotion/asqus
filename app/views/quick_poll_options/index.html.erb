@@ -1,0 +1,27 @@
+<h1>Listing quick_poll_options</h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th>Quick poll</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @quick_poll_options.each do |quick_poll_option| %>
+  <tr>
+    <td><%= quick_poll_option.text %></td>
+    <td><%= quick_poll_option.quick_poll_id %></td>
+    <td><%= quick_poll_option.value %></td>
+    <td><%= link_to 'Show', quick_poll_option %></td>
+    <td><%= link_to 'Edit', edit_quick_poll_option_path(quick_poll_option) %></td>
+    <td><%= link_to 'Destroy', quick_poll_option, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Quick poll option', new_quick_poll_option_path %>

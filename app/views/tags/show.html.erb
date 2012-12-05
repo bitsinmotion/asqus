@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tag:</b>
+  <%= @tag.tag %>
+</p>
+
+<p>
+  <b>Context:</b>
+  <%= @tag.context %>
+</p>
+
+<p>
+  <b>Taggable type:</b>
+  <%= @tag.taggable_type %>
+</p>
+
+<p>
+  <b>Taggable:</b>
+  <%= @tag.taggable_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<%= link_to 'Back', tags_path %>
