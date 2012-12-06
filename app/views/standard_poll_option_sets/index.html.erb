@@ -1,0 +1,23 @@
+<h1>Listing standard_poll_option_sets</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @standard_poll_option_sets.each do |standard_poll_option_set| %>
+  <tr>
+    <td><%= standard_poll_option_set.name %></td>
+    <td><%= link_to 'Show', standard_poll_option_set %></td>
+    <td><%= link_to 'Edit', edit_standard_poll_option_set_path(standard_poll_option_set) %></td>
+    <td><%= link_to 'Destroy', standard_poll_option_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Standard poll option set', new_standard_poll_option_set_path %>

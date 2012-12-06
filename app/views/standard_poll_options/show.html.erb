@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Standard poll option set:</b>
+  <%= @standard_poll_option.standard_poll_option_set_id %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @standard_poll_option.text %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @standard_poll_option.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_standard_poll_option_path(@standard_poll_option) %> |
+<%= link_to 'Back', standard_poll_options_path %>

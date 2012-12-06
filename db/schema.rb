@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205042406) do
+ActiveRecord::Schema.define(:version => 20121206081943) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -194,6 +194,25 @@ ActiveRecord::Schema.define(:version => 20121205042406) do
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
+  create_table "standard_poll_option_sets", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "standard_poll_option_sets", ["name"], :name => "index_standard_poll_option_sets_on_name", :unique => true
+
+  create_table "standard_poll_options", :force => true do |t|
+    t.integer  "standard_poll_option_set_id", :null => false
+    t.string   "text",                        :null => false
+    t.integer  "value",                       :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "standard_poll_options", ["standard_poll_option_set_id", "text"], :name => "uidx_std_poll_options_on_text", :unique => true
+  add_index "standard_poll_options", ["standard_poll_option_set_id", "value"], :name => "uidx_std_poll_options_on_value", :unique => true
+
   create_table "state_house_districts", :force => true do |t|
     t.integer  "district_number", :null => false
     t.integer  "state_id",        :null => false
@@ -223,12 +242,12 @@ ActiveRecord::Schema.define(:version => 20121205042406) do
   add_index "states", ["name"], :name => "index_states_on_name", :unique => true
 
   create_table "tags", :force => true do |t|
-    t.string   "tag"
-    t.string   "context"
-    t.string   "taggable_type"
-    t.integer  "taggable_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "tag",                               :null => false
+    t.string   "context",       :default => "main", :null => false
+    t.string   "taggable_type",                     :null => false
+    t.integer  "taggable_id",                       :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   add_index "tags", ["tag", "context", "taggable_type", "taggable_id"], :name => "index_tags_on_tag_and_context_and_taggable_type_and_taggable_id", :unique => true

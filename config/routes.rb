@@ -1,4 +1,10 @@
 Asqus::Application.routes.draw do
+  resources :standard_poll_options
+
+
+  resources :standard_poll_option_sets
+
+
   resources :tags
 
 
