@@ -28,58 +28,80 @@ OfficeType.create([
 
 puts 'CREATING STATES'
 State.create([
-  { :name => 'Alabama', :abbreviation => 'AL'},
-  { :name => 'Alaska', :abbreviation => 'AK' },
-  { :name => 'Arizona', :abbreviation => 'AZ' },
-  { :name => 'Arkansas', :abbreviation => 'AR' },
-  { :name => 'California', :abbreviation => 'CA' },
-  { :name => 'Colorado', :abbreviation => 'CO' },
-  { :name => 'Connecticut', :abbreviation => 'CT' },
-  { :name => 'Delaware', :abbreviation => 'DE' },
-  { :name => 'District of Columbia', :abbreviation => 'DC' },
-  { :name => 'Florida', :abbreviation => 'FL' },
-  { :name => 'Georgia', :abbreviation => 'GA' },
-  { :name => 'Hawaii', :abbreviation => 'HI' },
-  { :name => 'Idaho', :abbreviation => 'ID' },
-  { :name => 'Illinois', :abbreviation => 'IL' },
-  { :name => 'Indiana', :abbreviation => 'IN' },
-  { :name => 'Iowa', :abbreviation => 'IA' },
-  { :name => 'Kansas', :abbreviation => 'KS' },
-  { :name => 'Kentucky', :abbreviation => 'KY' },
-  { :name => 'Louisiana', :abbreviation => 'LA' },
-  { :name => 'Maine', :abbreviation => 'ME' },
-  { :name => 'Maryland', :abbreviation => 'MD' },
-  { :name => 'Massachusetts', :abbreviation => 'MA' },
-  { :name => 'Michigan', :abbreviation => 'MI' },
-  { :name => 'Minnesota', :abbreviation => 'MN' },
-  { :name => 'Mississippi', :abbreviation => 'MS' },
-  { :name => 'Missouri', :abbreviation => 'MO' },
-  { :name => 'Montana', :abbreviation => 'MT' },
-  { :name => 'Nebraska', :abbreviation => 'NE' },
-  { :name => 'Nevada', :abbreviation => 'NV' },
-  { :name => 'New Hampshire', :abbreviation => 'NH' },
-  { :name => 'New Jersey', :abbreviation => 'NJ' },
-  { :name => 'New Mexico', :abbreviation => 'NM' },
-  { :name => 'New York', :abbreviation => 'NY' },
-  { :name => 'North Carolina', :abbreviation => 'NC' },
-  { :name => 'North Dakota', :abbreviation => 'ND' },
-  { :name => 'Ohio', :abbreviation => 'OH' },
-  { :name => 'Oklahoma', :abbreviation => 'OK' },
-  { :name => 'Oregon', :abbreviation => 'OR' },
-  { :name => 'Pennsylvania', :abbreviation => 'PA' },
-  { :name => 'Rhode Island', :abbreviation => 'RI' },
-  { :name => 'South Carolina', :abbreviation => 'SC' },
-  { :name => 'South Dakota', :abbreviation => 'SD' },
-  { :name => 'Tennessee', :abbreviation => 'TN' },
-  { :name => 'Texas', :abbreviation => 'TX' },
-  { :name => 'Utah', :abbreviation => 'UT' },
-  { :name => 'Vermont', :abbreviation => 'VT' },
-  { :name => 'Virginia', :abbreviation => 'VA' },
-  { :name => 'Washington', :abbreviation => 'WA' },
-  { :name => 'West Virginia', :abbreviation => 'WV' },
-  { :name => 'Wisconsin', :abbreviation => 'WI' },
-  { :name => 'Wyoming', :abbreviation => 'WY' }
+  { :id => 1, :name => 'Alabama', :abbreviation => 'AL'},
+  { :id => 2, :name => 'Alaska', :abbreviation => 'AK' },
+  { :id => 3, :name => 'Arizona', :abbreviation => 'AZ' },
+  { :id => 4, :name => 'Arkansas', :abbreviation => 'AR' },
+  { :id => 5, :name => 'California', :abbreviation => 'CA' },
+  { :id => 6, :name => 'Colorado', :abbreviation => 'CO' },
+  { :id => 7, :name => 'Connecticut', :abbreviation => 'CT' },
+  { :id => 8, :name => 'Delaware', :abbreviation => 'DE' },
+  { :id => 9, :name => 'Florida', :abbreviation => 'FL' },
+  { :id => 10, :name => 'Georgia', :abbreviation => 'GA' },
+  { :id => 11, :name => 'Hawaii', :abbreviation => 'HI' },
+  { :id => 12, :name => 'Idaho', :abbreviation => 'ID' },
+  { :id => 13, :name => 'Illinois', :abbreviation => 'IL' },
+  { :id => 14, :name => 'Indiana', :abbreviation => 'IN' },
+  { :id => 15, :name => 'Iowa', :abbreviation => 'IA' },
+  { :id => 16, :name => 'Kansas', :abbreviation => 'KS' },
+  { :id => 17, :name => 'Kentucky', :abbreviation => 'KY' },
+  { :id => 18, :name => 'Louisiana', :abbreviation => 'LA' },
+  { :id => 19, :name => 'Maine', :abbreviation => 'ME' },
+  { :id => 20, :name => 'Maryland', :abbreviation => 'MD' },
+  { :id => 21, :name => 'Massachusetts', :abbreviation => 'MA' },
+  { :id => 22, :name => 'Michigan', :abbreviation => 'MI' },
+  { :id => 23, :name => 'Minnesota', :abbreviation => 'MN' },
+  { :id => 24, :name => 'Mississippi', :abbreviation => 'MS' },
+  { :id => 25, :name => 'Missouri', :abbreviation => 'MO' },
+  { :id => 26, :name => 'Montana', :abbreviation => 'MT' },
+  { :id => 27, :name => 'Nebraska', :abbreviation => 'NE' },
+  { :id => 28, :name => 'Nevada', :abbreviation => 'NV' },
+  { :id => 29, :name => 'New Hampshire', :abbreviation => 'NH' },
+  { :id => 30, :name => 'New Jersey', :abbreviation => 'NJ' },
+  { :id => 31, :name => 'New Mexico', :abbreviation => 'NM' },
+  { :id => 32, :name => 'New York', :abbreviation => 'NY' },
+  { :id => 33, :name => 'North Carolina', :abbreviation => 'NC' },
+  { :id => 34, :name => 'North Dakota', :abbreviation => 'ND' },
+  { :id => 35, :name => 'Ohio', :abbreviation => 'OH' },
+  { :id => 36, :name => 'Oklahoma', :abbreviation => 'OK' },
+  { :id => 37, :name => 'Oregon', :abbreviation => 'OR' },
+  { :id => 38, :name => 'Pennsylvania', :abbreviation => 'PA' },
+  { :id => 39, :name => 'Rhode Island', :abbreviation => 'RI' },
+  { :id => 40, :name => 'South Carolina', :abbreviation => 'SC' },
+  { :id => 41, :name => 'South Dakota', :abbreviation => 'SD' },
+  { :id => 42, :name => 'Tennessee', :abbreviation => 'TN' },
+  { :id => 43, :name => 'Texas', :abbreviation => 'TX' },
+  { :id => 44, :name => 'Utah', :abbreviation => 'UT' },
+  { :id => 45, :name => 'Vermont', :abbreviation => 'VT' },
+  { :id => 46, :name => 'Virginia', :abbreviation => 'VA' },
+  { :id => 47, :name => 'Washington', :abbreviation => 'WA' },
+  { :id => 48, :name => 'West Virginia', :abbreviation => 'WV' },
+  { :id => 49, :name => 'Wisconsin', :abbreviation => 'WI' },
+  { :id => 50, :name => 'Wyoming', :abbreviation => 'WY' },
+  { :id => 51, :name => 'District of Columbia', :abbreviation => 'DC' },
 ], :without_protection => true)
+
+
+puts 'CREATING CONGRESSIONAL DISTRICTS, REPRESENTATIVE OFFICES'
+
+for i in 1..15 do
+  CongressionalDistrict.create([
+    { :id => i, :state_id => 22, :district_number => i },
+  ], :without_protection => true)
+  Office.create([
+    { :id => i, :name => "U.S. Representative", :polity_id => i, :polity_type => "congressional_district" }
+  ], :without_protection => true)
+end
+
+Official.create([
+  { :id => 1, :name => "John Dingell", :email => "dingall@house.gov" }
+], :without_protection => true)
+
+
+OfficialTenure.create([
+  { :id => 1, :official_id => 1, :office_id => 15, :from_date => "2000-01-20", :to_date => "2015-01-20" }
+], :without_protection => true)
+
 
 
 puts 'CREATING ROLES'
@@ -88,12 +110,23 @@ Role.create([
   { :name => 'user' }, 
   { :name => 'VIP' }
 ], :without_protection => true)
+
+
 puts 'SETTING UP DEFAULT USER LOGIN'
-user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
-puts 'New user created: ' << user.name
-user2 = User.create! :name => 'Second User', :email => 'user2@example.com', :password => 'please', :password_confirmation => 'please'
+user1 = User.create! :name => 'Joe Blow', :email => 'joe@blow.com', :password => 'please', :password_confirmation => 'please'
+puts 'New user created: ' << user1.name
+user2 = User.create! :name => 'Jane Blow', :email => 'jane@blow.com', :password => 'please', :password_confirmation => 'please'
 puts 'New user created: ' << user2.name
-user.add_role :admin
+user1.add_role :admin
 user2.add_role :VIP
+
+
+puts 'ADDING USERS TO GROUPS'
+
+UserGroup.create([
+ { :id => 1, :user_id => user1.id, :group_type => "official", :group_id => 1 }
+], :without_protection => true )
+
+
 
 
