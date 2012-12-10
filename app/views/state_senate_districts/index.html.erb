@@ -1,4 +1,4 @@
-<h1>Listing state_senate_districts</h1>
+<h3>State Senate Districts</h3>
 
 <table>
   <tr>
@@ -12,7 +12,7 @@
 <% @state_senate_districts.each do |state_senate_district| %>
   <tr>
     <td><%= state_senate_district.district_number %></td>
-    <td><%= state_senate_district.state_id %></td>
+    <td><%= state_senate_district.state %></td>
     <td><%= link_to 'Show', state_senate_district %></td>
     <td><%= link_to 'Edit', edit_state_senate_district_path(state_senate_district) %></td>
     <td><%= link_to 'Destroy', state_senate_district, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,9 +1,10 @@
-<%= simple_form_for(@county) do |f| %>
+<%= simple_form_for(@quick_poll_response) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.association :state %>
+    <%= f.input :quick_poll_id %>
+    <%= f.input :user_id %>
+    <%= f.input :value %>
   </div>
 
   <div class="form-actions">

@@ -25,7 +25,7 @@ class QuickPollsController < ApplicationController
   # GET /quick_polls/new.json
   def new
     @quick_poll = QuickPoll.new
-
+    3.times { @quick_poll.quick_poll_options.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @quick_poll }

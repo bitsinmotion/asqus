@@ -15,15 +15,15 @@ PollWorkflowState.create([
 
 puts 'CREATING OFFICE TYPES'
 OfficeType.create([
-  { :description => 'President', :polity_type => 'country' },
-  { :description => 'Vice President', :polity_type => 'country' },
-  { :description => 'Governor', :polity_type => 'state' },
-  { :description => 'Lieutenant Governor', :polity_type => 'state' },
-  { :description => 'United States Senator', :polity_type => 'state' },
-  { :description => 'United States Representative', :polity_type => 'congressional_district' },
-  { :description => 'State Senator', :polity_type => 'state_senate_district' },
-  { :description => 'State Representative', :polity_type => 'state_house_district' },
-  { :description => 'Mayor', :polity_type => 'municipality' }
+  { :description => 'President', :polity_type => 'Country' },
+  { :description => 'Vice President', :polity_type => 'Country' },
+  { :description => 'Governor', :polity_type => 'State' },
+  { :description => 'Lieutenant Governor', :polity_type => 'State' },
+  { :description => 'United States Senator', :polity_type => 'State' },
+  { :description => 'United States Representative', :polity_type => 'CongressionalDistrict' },
+  { :description => 'State Senator', :polity_type => 'StateSenateDistrict' },
+  { :description => 'State Representative', :polity_type => 'StateHouseDistrict' },
+  { :description => 'Mayor', :polity_type => 'Municipality' }
 ], :without_protection => true)
 
 puts 'CREATING STATES'
@@ -89,7 +89,7 @@ for i in 1..15 do
     { :id => i, :state_id => 22, :district_number => i },
   ], :without_protection => true)
   Office.create([
-    { :id => i, :name => "U.S. Representative", :polity_id => i, :polity_type => "congressional_district" }
+    { :id => i, :name => "U.S. Representative", :polity_id => i, :polity_type => "CongressionalDistrict" }
   ], :without_protection => true)
 end
 
@@ -124,9 +124,31 @@ user2.add_role :VIP
 puts 'ADDING USERS TO GROUPS'
 
 UserGroup.create([
- { :id => 1, :user_id => user1.id, :group_type => "official", :group_id => 1 }
+ { :id => 1, :user_id => user1.id, :group_type => "Official", :group_id => 1 }
 ], :without_protection => true )
 
 
+puts 'CREATING ISSUES'
+
+Issue.create([
+  { :id => 1, :title => "Bridge to Canada", :poller_type => 'Office', :poller_id => 1 }
+], :without_protection => true )
+
+puts 'CREATING QUICK POLLS'
+
+QuickPoll.create([
+  { :id => 1, :issue_id => 1, :title => "Should the bridge to Canada be built?", :body => "Should $3.7 gazillion dollars be spent on a bridge to Canada?",
+    :start_time => Date.parse("01 Jan 2012"), :end_time => Date.parse('01 Jan 2013'), :poll_workflow_state_id => 2 }
+], :without_protection => true )
+
+QuickPollOption.create([
+  { :id => 1, :quick_poll_id => 1, :text => "Yes", :value => 1 },
+  { :id => 2, :quick_poll_id => 1, :text => "No", :value => 2 }
+], :without_protection => true )
+
+
+
+
+  
 
 

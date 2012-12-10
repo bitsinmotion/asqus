@@ -1,0 +1,2 @@
+module QuickPollResponsesHelper
+end

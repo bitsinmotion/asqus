@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206081943) do
+ActiveRecord::Schema.define(:version => 20121208050902) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -168,15 +168,26 @@ ActiveRecord::Schema.define(:version => 20121206081943) do
 
   add_index "quick_poll_options", ["quick_poll_id", "value"], :name => "index_quick_poll_options_on_quick_poll_id_and_value", :unique => true
 
+  create_table "quick_poll_responses", :force => true do |t|
+    t.integer  "quick_poll_id"
+    t.integer  "user_id"
+    t.integer  "value"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "quick_poll_responses", ["quick_poll_id", "user_id"], :name => "index_quick_poll_responses_on_quick_poll_id_and_user_id", :unique => true
+  add_index "quick_poll_responses", ["user_id"], :name => "index_quick_poll_responses_on_user_id"
+
   create_table "quick_polls", :force => true do |t|
-    t.string   "title",                              :null => false
+    t.string   "title",                  :null => false
     t.text     "body"
-    t.datetime "start_time",                         :null => false
-    t.datetime "end_time",                           :null => false
-    t.integer  "issue_id",                           :null => false
-    t.integer  "poll_workflow_state", :default => 0, :null => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "start_time",             :null => false
+    t.datetime "end_time",               :null => false
+    t.integer  "issue_id",               :null => false
+    t.integer  "poll_workflow_state_id", :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   add_index "quick_polls", ["end_time"], :name => "index_quick_polls_on_end_time"
@@ -200,7 +211,7 @@ ActiveRecord::Schema.define(:version => 20121206081943) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "standard_poll_option_sets", ["name"], :name => "index_standard_poll_option_sets_on_name", :unique => true
+  add_index "standard_poll_option_sets", ["name"], :name => "idx_std_poll_option_sets_on_name", :unique => true
 
   create_table "standard_poll_options", :force => true do |t|
     t.integer  "standard_poll_option_set_id", :null => false

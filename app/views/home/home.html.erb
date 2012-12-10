@@ -1,3 +1,5 @@
 <h3>Home</h3>
 Welcome to your Asq page.
-
+<% @current_user_groups.each do |user_group| %>
+<%= user_group %>
+<% end %>

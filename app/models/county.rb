@@ -6,5 +6,8 @@ class County < ActiveRecord::Base
   validates_presence_of :state_id, :name
   validates_numericality_of :state_id
 
+  def to_s
+    return name + " County, " + state.name
+  end
 
 end

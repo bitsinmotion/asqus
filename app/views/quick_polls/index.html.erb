@@ -6,8 +6,7 @@
     <th>Body</th>
     <th>Start time</th>
     <th>End time</th>
-    <th>Poller</th>
-    <th>Poller type</th>
+    <th>Issue</th>
     <th>Poll workflow state</th>
     <th></th>
     <th></th>
@@ -20,9 +19,8 @@
     <td><%= quick_poll.body %></td>
     <td><%= quick_poll.start_time %></td>
     <td><%= quick_poll.end_time %></td>
-    <td><%= quick_poll.poller_id %></td>
-    <td><%= quick_poll.poller_type %></td>
-    <td><%= quick_poll.poll_workflow_state %></td>
+    <td><%= quick_poll.issue_id %></td>
+    <td><%= quick_poll.poll_workflow_state_id %></td>
     <td><%= link_to 'Show', quick_poll %></td>
     <td><%= link_to 'Edit', edit_quick_poll_path(quick_poll) %></td>
     <td><%= link_to 'Destroy', quick_poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>

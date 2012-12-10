@@ -2,15 +2,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.association :issue %>
     <%= f.input :title %>
     <%= f.input :body %>
-    <%= f.input :start_time %>
-    <%= f.input :end_time %>
-    <%= f.input :poller_id %>
-    <%= f.input :poller_type %>
-    <%= f.input :poll_workflow_state %>
+    <%= f.input :start_time, :as => :date %>
+    <%= f.input :end_time, :as => :date %>
+    <% i = 1 %>
+    <%= f.fields_for :quick_poll_options do |builder| %>
+      <%= builder.input :text, :label=>'Option' + i.to_s %>
+      <% i = i + 1 %>
+    <% end %>
+    
   </div>
-
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

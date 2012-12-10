@@ -9,4 +9,8 @@ class Office < ActiveRecord::Base
   validates_presence_of :name, :polity_id, :polity_type
   validates_numericality_of :polity_id
 
+  def to_s
+    return name
+  end
+
 end

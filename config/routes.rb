@@ -1,4 +1,10 @@
 Asqus::Application.routes.draw do
+  resources :quick_poll_responses
+
+
+  resources :quick_polls
+
+
   resources :standard_poll_options
 
 
@@ -18,9 +24,6 @@ Asqus::Application.routes.draw do
 
 
   resources :quick_poll_options
-
-
-  resources :quick_polls
 
 
   resources :user_groups
@@ -62,6 +65,9 @@ Asqus::Application.routes.draw do
     root :to => 'home#home'
   end
   root :to => "home#index"
+ 
+
+  match '/admin' => 'home#admin'
 
   devise_for :users
   resources :users
@@ -69,5 +75,7 @@ Asqus::Application.routes.draw do
   match '/auth/:provider/callback' => 'authentications#create'
   resources :authentications, :only => [:index,:create,:destroy]
   match '/auth/failure' => 'authentications#auth_failure'
+
+
 
 end

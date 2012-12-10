@@ -4,4 +4,8 @@ class Municipality < ActiveRecord::Base
   attr_accessible :name, :state_id
   validates_presence_of :state_id, :name
 
+  def to_s
+    return name + ", " + state.abbreviation
+  end
+
 end

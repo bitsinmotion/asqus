@@ -6,7 +6,7 @@ class CreateQuickPolls < ActiveRecord::Migration
       t.datetime :start_time, :null => false
       t.datetime :end_time, :null => false
       t.integer :issue_id, :null => false
-      t.integer :poll_workflow_state, :null => false, :default => 0
+      t.integer :poll_workflow_state_id, :null => false
 
       t.timestamps
     end

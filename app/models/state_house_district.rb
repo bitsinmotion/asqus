@@ -7,4 +7,8 @@ class StateHouseDistrict < ActiveRecord::Base
   validates_presence_of :state_id, :district_number
   validates_numericality_of :state_id, :district_number
 
+  def to_s
+    return state.name + " state house district " + district_number.to_s()
+  end
+
 end
