@@ -3,6 +3,7 @@ class CreateQuickPolls < ActiveRecord::Migration
     create_table :quick_polls do |t|
       t.string :title, :null => false
       t.text :body
+      t.integer :quick_poll_type_id, :null => false
       t.datetime :start_time, :null => false
       t.datetime :end_time, :null => false
       t.integer :issue_id, :null => false

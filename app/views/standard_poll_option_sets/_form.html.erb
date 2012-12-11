@@ -3,10 +3,13 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+    <fieldset>
+    <% i = 1 %>
     <%= f.fields_for :standard_poll_options do |builder| %>
-      <%= builder.input :text, :label=>'Option' + i.ts %>
+       <%= render 'option_fields', f: builder, i: i %>
       <% i = i + 1 %>
     <% end %>
+    </fieldset>
  
   </div>
 

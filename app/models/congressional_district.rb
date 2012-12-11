@@ -8,7 +8,7 @@ class CongressionalDistrict < ActiveRecord::Base
   validates_numericality_of :state_id, :district_number 
 
   def to_s
-    return state.name + " district " + district_number.to_s()
+    return state.name + " District " + district_number.to_s()
   end
 
 end

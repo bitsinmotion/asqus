@@ -1,4 +1,10 @@
 Asqus::Application.routes.draw do
+  resources :wards
+
+
+  resources :quick_poll_types
+
+
   resources :quick_poll_responses
 
 

@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
     info = auth['extra']['raw_info']
     self.email = info['email']
     self.name = info['first_name'] + ' ' + info['last_name']
-    self.sex = info['sex']
-    self.current_location = info['current_location']
+    # self.sex = info['sex']
+    # self.current_location = info['current_location']
     authentications.build(:provider => auth['provider'], :uid => auth['uid'], :token => auth['credentials']['token'])
   end  
 

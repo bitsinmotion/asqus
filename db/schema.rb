@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208050902) do
+ActiveRecord::Schema.define(:version => 20121211053322) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -179,6 +179,14 @@ ActiveRecord::Schema.define(:version => 20121208050902) do
   add_index "quick_poll_responses", ["quick_poll_id", "user_id"], :name => "index_quick_poll_responses_on_quick_poll_id_and_user_id", :unique => true
   add_index "quick_poll_responses", ["user_id"], :name => "index_quick_poll_responses_on_user_id"
 
+  create_table "quick_poll_types", :force => true do |t|
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "quick_poll_types", ["type"], :name => "index_quick_poll_types_on_type", :unique => true
+
   create_table "quick_polls", :force => true do |t|
     t.string   "title",                  :null => false
     t.text     "body"
@@ -315,5 +323,14 @@ ActiveRecord::Schema.define(:version => 20121208050902) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "wards", :force => true do |t|
+    t.integer  "municipality_id", :null => false
+    t.integer  "ward_number",     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "wards", ["municipality_id", "ward_number"], :name => "index_wards_on_municipality_id_and_ward_number", :unique => true
 
 end

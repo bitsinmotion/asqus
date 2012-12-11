@@ -1,0 +1,7 @@
+<fieldset>
+  <%= f.hidden_field :value, :value => i.to_s %>
+  <%= f.label :text, "Option " + i.to_s %>
+  <%= f.text_field :text %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "remove", '#', class: "remove_fields" %>
+</fieldset>

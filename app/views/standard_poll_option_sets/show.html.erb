@@ -3,7 +3,20 @@
 <p>
   <b>Name:</b>
   <%= @standard_poll_option_set.name %>
-</p>
+</p
+
+
+
+<ol>
+
+<% for option in @standard_poll_option_set.standard_poll_options %>
+  <li><%= option.value.to_s + " " + option.text  %></li>
+
+<% end %>
+
+
+</ol>
+
 
 
 <%= link_to 'Edit', edit_standard_poll_option_set_path(@standard_poll_option_set) %> |
