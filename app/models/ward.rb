@@ -4,7 +4,7 @@ class Ward < ActiveRecord::Base
 
   validates_presence_of :municipality_id, :ward_number
   validates_numericality_of :ward_number, :only_integer => true, :greater_than => 0
-
+  validates_uniqueness_of :ward_number, :scope=>:municipality_id
 
   def to_s
    return "Ward " + ward_number.to_s

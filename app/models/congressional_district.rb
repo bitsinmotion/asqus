@@ -6,6 +6,7 @@ class CongressionalDistrict < ActiveRecord::Base
 
   validates_presence_of :state_id, :district_number
   validates_numericality_of :state_id, :district_number 
+  validates_uniqueness_of :district_number, :scope => :state_id
 
   def to_s
     return state.name + " District " + district_number.to_s()
