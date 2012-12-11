@@ -25,7 +25,7 @@ class StandardPollOptionSetsController < ApplicationController
   # GET /standard_poll_option_sets/new.json
   def new
     @standard_poll_option_set = StandardPollOptionSet.new
-
+    4.times { @standard_poll_option_set.standard_poll_options.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @standard_poll_option_set }
