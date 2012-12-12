@@ -1,8 +1,7 @@
-<%= simple_form_for(@ward) do |f| %>
+<%= simple_form_for([@municipality, @ward]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :municipality %>
     <%= f.input :ward_number %>
   </div>
 

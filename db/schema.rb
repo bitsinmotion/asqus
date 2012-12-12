@@ -180,16 +180,17 @@ ActiveRecord::Schema.define(:version => 20121211053322) do
   add_index "quick_poll_responses", ["user_id"], :name => "index_quick_poll_responses_on_user_id"
 
   create_table "quick_poll_types", :force => true do |t|
-    t.string   "type"
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "quick_poll_types", ["type"], :name => "index_quick_poll_types_on_type", :unique => true
+  add_index "quick_poll_types", ["name"], :name => "index_quick_poll_types_on_name", :unique => true
 
   create_table "quick_polls", :force => true do |t|
     t.string   "title",                  :null => false
     t.text     "body"
+    t.integer  "quick_poll_type_id",     :null => false
     t.datetime "start_time",             :null => false
     t.datetime "end_time",               :null => false
     t.integer  "issue_id",               :null => false

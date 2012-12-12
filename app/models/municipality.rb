@@ -1,5 +1,6 @@
 class Municipality < ActiveRecord::Base
   has_many :offices, :as => :polity
+  has_many :wards
   belongs_to :state
   attr_accessible :name, :state_id
   validates_presence_of :state_id, :name

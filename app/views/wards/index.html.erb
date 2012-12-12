@@ -1,4 +1,4 @@
-<h3>Wards</h3>
+<h3>Wards in <%= @municipality %> </h3>
 
 <table width=400>
   <tr>
@@ -13,13 +13,13 @@
   <tr>
     <td><%= ward.municipality %></td>
     <td><%= ward.ward_number %></td>
-    <td><%= link_to 'Show', ward %></td>
-    <td><%= link_to 'Edit', edit_ward_path(ward) %></td>
-    <td><%= link_to 'Destroy', ward, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [@municipality, ward] %>
+    <td><%= link_to 'Edit', edit_municipality_ward_path(@municipality,ward) %></td>
+    <td><%= link_to 'Destroy', [@municipality, ward], :method => :delete, :confirm => "Are you sure?" %> 
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Ward', new_ward_path %>
+<%= link_to 'New Ward', new_municipality_ward_path %>

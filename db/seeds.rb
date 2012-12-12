@@ -132,6 +132,8 @@ Official.create([
 ], :without_protection => true)
 
 
+puts 'CREATING OFFICIAL TENURES'
+
 OfficialTenure.create([
   { :id => 1, :official_id => 1, :office_id => 1, :from_date => "2000-01-20", :to_date => "2015-01-20" },
   { :id => 2, :official_id => 2, :office_id => 2, :from_date => "2000-01-20", :to_date => "2015-01-20" },
@@ -185,10 +187,18 @@ Issue.create([
   { :id => 2, :title => "Fiscal Cliff", :poller_type => 'Office', :poller_id => 15 }
 ], :without_protection => true )
 
+puts 'CREATING QUICK POLL TYPES'
+
+QuickPollType.create([
+  { :id => 1, :name => "Public" },
+  { :id => 2, :name => "Private" },
+  { :id => 3, :name => "Anonymous" }
+], :without_protection => true )
+
 puts 'CREATING QUICK POLLS'
 
 QuickPoll.create([
-  { :id => 1, :issue_id => 1, :title => "Should the bridge to Canada be built?", :body => "Should $3.7 gazillion dollars be spent on a bridge to Canada?",
+  { :id => 1, :issue_id => 1, :quick_poll_type_id => 1, :title => "Should the bridge to Canada be built?", :body => "Should $3.7 gazillion dollars be spent on a bridge to Canada?",
     :start_time => Date.parse("01 Jan 2012"), :end_time => Date.parse('01 Jan 2013'), :poll_workflow_state_id => 2 }
 ], :without_protection => true )
 

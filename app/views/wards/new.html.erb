@@ -1,5 +1,5 @@
-<h3>New ward</h3>
+<h3>New ward in <%= @municipality %></h3>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', wards_path %>
+<%= link_to 'Back', municipality_wards_path(@municipality) %>

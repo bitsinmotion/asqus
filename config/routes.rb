@@ -1,5 +1,5 @@
 Asqus::Application.routes.draw do
-  resources :wards
+  
 
 
   resources :quick_poll_types
@@ -59,7 +59,9 @@ Asqus::Application.routes.draw do
   resources :congressional_districts
 
 
-  resources :municipalities
+  resources :municipalities do
+    resources :wards
+  end
 
 
   resources :poll_workflow_states
