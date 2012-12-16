@@ -1,5 +1,38 @@
 <h3>Home</h3>
-Welcome to your Asq page.
-<% @current_user_groups.each do |user_group| %>
-<%= user_group %>
+
+
+
+<h4>You Administrate</h4>
+
+
+
+<h4>Your elected officials</h4>
+
+<%# todo: fix up this horribly inefficient code %>
+
+<table width=400>
+<tr><th>Office</th><th>Incumbent</th></tr>
+
+<% @state_offices.each do |office| %>
+<% state_officer = incumbent_officials(office.id).first %>
+<tr><td><%= office %></td><td><%= state_officer.name if !state_officer.nil? %></td></tr>
 <% end %>
+
+<% @congressional_offices.each do |office| %>
+<% congressperson = incumbent_officials(office.id).first %>
+<tr><td><%= office %></td><td><%= congressperson.name if !congressperson.nil? %></td></tr>
+<% end %>
+
+<% @county_offices.each do |office| %>
+<% county_officer = incumbent_officials(office.id).first %>
+<tr><td><%= office %></td><td><%= county_officer.name if !county_officer.nil?%></td></tr>
+<% end %>
+
+<% @municipal_offices.each do |office| %>
+<% municipal_officer = incumbent_officials(office.id).first %>
+<tr><td><%= office %></td><td><%= municipal_officer.name if !municipal_officer.nil?%></td></tr>
+<% end %>
+
+
+
+</table>

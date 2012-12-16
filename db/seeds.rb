@@ -165,7 +165,8 @@ Role.create([
 
 
 puts 'SETTING UP DEFAULT USER LOGIN'
-user1 = User.create! :name => 'Joe Blow', :email => 'joe@blow.com', :password => 'please', :password_confirmation => 'please'
+user1 = User.create! :name => 'Joe Blow', :email => 'joe@blow.com', :password => 'please', :password_confirmation => 'please', :state_id => 22, :congressional_district_id =>15, :municipality_id => 2 
+
 puts 'New user created: ' << user1.name
 user2 = User.create! :name => 'Jane Blow', :email => 'jane@blow.com', :password => 'please', :password_confirmation => 'please'
 puts 'New user created: ' << user2.name

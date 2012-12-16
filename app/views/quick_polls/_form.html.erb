@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :issue %>
+    <%= f.association :issue %> (to do: allow creation of new issues)<p>
     <%= f.input :title %>
     <%= f.input :body %>
     <%= f.association :quick_poll_type %>
@@ -10,7 +10,7 @@
     <%= f.input :end_time, :as => :date %>
     <% i = 1 %>
     <%= f.fields_for :quick_poll_options do |builder| %>
-      <%= builder.input :text, :label=>'Option' + i.to_s %>
+      <%= builder.input :text%>
       <% i = i + 1 %>
     <% end %>
     

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   attr_accessible :current_location, :birth_date, :sex
+  attr_accessible :state_id, :congressional_district_id, :county_id, :municipality_id
+  attr_accessible :state_house_district_id, :state_senate_district_id
 
   include ActiveModel::Validations
 

@@ -24,7 +24,7 @@ describe StatesController do
   # State. As you add validations to State, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "name" => "MyString" }
+    {  }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe StatesController do
       it "assigns a newly created but unsaved state as @state" do
         # Trigger the behavior that occurs when invalid params are submitted
         State.any_instance.stub(:save).and_return(false)
-        post :create, {:state => { "name" => "invalid value" }}, valid_session
+        post :create, {:state => {  }}, valid_session
         assigns(:state).should be_a_new(State)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         State.any_instance.stub(:save).and_return(false)
-        post :create, {:state => { "name" => "invalid value" }}, valid_session
+        post :create, {:state => {  }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe StatesController do
         # specifies that the State created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        State.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
-        put :update, {:id => state.to_param, :state => { "name" => "MyString" }}, valid_session
+        State.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
+        put :update, {:id => state.to_param, :state => { "these" => "params" }}, valid_session
       end
 
       it "assigns the requested state as @state" do
@@ -132,7 +132,7 @@ describe StatesController do
         state = State.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         State.any_instance.stub(:save).and_return(false)
-        put :update, {:id => state.to_param, :state => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => state.to_param, :state => {  }}, valid_session
         assigns(:state).should eq(state)
       end
 
@@ -140,7 +140,7 @@ describe StatesController do
         state = State.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         State.any_instance.stub(:save).and_return(false)
-        put :update, {:id => state.to_param, :state => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => state.to_param, :state => {  }}, valid_session
         response.should render_template("edit")
       end
     end

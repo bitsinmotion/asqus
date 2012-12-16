@@ -25,7 +25,7 @@ class QuickPollsController < ApplicationController
   # GET /quick_polls/new.json
   def new
     @quick_poll = QuickPoll.new
-    3.times { @quick_poll.quick_poll_options.build }
+    5.times { @quick_poll.quick_poll_options.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @quick_poll }
@@ -40,13 +40,18 @@ class QuickPollsController < ApplicationController
   # POST /quick_polls
   # POST /quick_polls.json
   def create
+
+    logger.info params[:quick_poll]
+
     @quick_poll = QuickPoll.new(params[:quick_poll])
+
 
     respond_to do |format|
       if @quick_poll.save
         format.html { redirect_to @quick_poll, notice: 'Quick poll was successfully created.' }
         format.json { render json: @quick_poll, status: :created, location: @quick_poll }
       else
+        logger.debug @quick_poll.errors.full_messages
         format.html { render action: "new" }
         format.json { render json: @quick_poll.errors, status: :unprocessable_entity }
       end

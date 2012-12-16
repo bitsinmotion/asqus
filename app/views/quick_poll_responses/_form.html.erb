@@ -1,13 +1,34 @@
 <%= simple_form_for(@quick_poll_response) do |f| %>
   <%= f.error_notification %>
+  <%= f.hidden_field :quick_poll_id, :value => @quick_poll.id %>
 
+  <h3>Asq.us Poll: <%= @quick_poll.title %></h3> 
+
+  <%= @quick_poll.body %>
+
+  <p>
+  <% if @quick_poll.issue.poller_type == 'Office' %>
+    <% official = incumbent_officials(@quick_poll.issue.poller_id).first %>
+    <% unless official.nil? %>
+      (Asqed by <%= official.name %>)
+    <% end %>
+  <% end %>
+
+
+  <p>
   <div class="form-inputs">
-    <%= f.association :quick_poll %>
-    <%= f.association :user %>
-    <%= f.input :value %>
-  </div>
+  <table>
+  <% @quick_poll.quick_poll_options.each do |option| %>
+    <tr>
+    <td><%= radio_button_tag :value, option.value %></td>
+    <td><%= label_tag :value, option.text %></td>
+    </tr>
+  <% end %>
+  </table>  
+
+ </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Submit' %>
   </div>
 <% end %>

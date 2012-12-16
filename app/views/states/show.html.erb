@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h3>State of <%= @state.name %></h3>
+
+
+<p>
+<h4>State Offices</h4>
+
+<table width=400>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% @state.offices.each do |office| %>
+  <tr>
+    <td><%= office %></td>
+  </tr>
+<% end %>
+</table>
+
+<h4>Congressional Districts</h4>
+
+<table width=400>
+
+<% @state.congressional_offices.each do |office| %>
+   <tr><td><%= office.polity %></td><td><%= office %></td></tr>
+<% end %> 
+</table>
+
+<%= link_to 'Back', states_path %>

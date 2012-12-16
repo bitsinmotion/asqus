@@ -1,6 +1,6 @@
 Asqus::Application.routes.draw do
   
-
+  resources :states
 
   resources :quick_poll_types
 
