@@ -15,15 +15,15 @@ PollWorkflowState.create([
 
 puts 'CREATING OFFICE TYPES'
 OfficeType.create([
-  { :description => 'President', :polity_type => 'Country' },
-  { :description => 'Vice President', :polity_type => 'Country' },
-  { :description => 'Governor', :polity_type => 'State' },
-  { :description => 'Lieutenant Governor', :polity_type => 'State' },
-  { :description => 'United States Senator', :polity_type => 'State' },
-  { :description => 'United States Representative', :polity_type => 'CongressionalDistrict' },
-  { :description => 'State Senator', :polity_type => 'StateSenateDistrict' },
-  { :description => 'State Representative', :polity_type => 'StateHouseDistrict' },
-  { :description => 'Mayor', :polity_type => 'Municipality' }
+  { :id => 1, :description => 'President', :polity_type => 'Country' },
+  { :id => 2, :description => 'Vice President', :polity_type => 'Country' },
+  { :id => 3, :description => 'United States Senator', :polity_type => 'State' },
+  { :id => 4, :description => 'United States Representative', :polity_type => 'CongressionalDistrict' },
+  { :id => 5, :description => 'Governor', :polity_type => 'State' },
+  { :id => 6, :description => 'Lieutenant Governor', :polity_type => 'State' },
+  { :id => 7, :description => 'State Senator', :polity_type => 'StateSenateDistrict' },
+  { :id => 8, :description => 'State Representative', :polity_type => 'StateHouseDistrict' },
+  { :id => 9, :description => 'Mayor', :polity_type => 'Municipality' }
 ], :without_protection => true)
 
 puts 'CREATING STATES'
@@ -95,17 +95,17 @@ for i in 1..15 do
     { :id => i, :state_id => 22, :district_number => i },
   ], :without_protection => true)
   Office.create([
-    { :id => i, :name => "U.S. Representative", :polity_id => i, :polity_type => "CongressionalDistrict" }
+    { :id => i, :office_type_id => 4, :name => "U.S. Representative", :polity_id => i, :polity_type => "CongressionalDistrict" }
   ], :without_protection => true)
 end
 
 Office.create([
-    { :id => 16, :name => "Senator", :polity_id => 22, :polity_type => 'State' },
-    { :id => 17, :name => "Senator", :polity_id => 22, :polity_type => 'State' },
-    { :id => 18, :name => "Governor", :polity_id => 22, :polity_type => 'State' },
-    { :id => 19, :name => "Mayor", :polity_id => 1, :polity_type => 'Municipality' },
-    { :id => 20, :name => "Mayor", :polity_id => 2, :polity_type => 'Municipality' },
-    { :id => 21, :name => "Mayor", :polity_id => 3, :polity_type => 'Municipality' }
+    { :id => 16, :office_type_id => 3, :name => "Senator", :polity_id => 22, :polity_type => 'State' },
+    { :id => 17, :office_type_id => 3, :name => "Senator", :polity_id => 22, :polity_type => 'State' },
+    { :id => 18, :office_type_id => 5, :name => "Governor", :polity_id => 22, :polity_type => 'State' },
+    { :id => 19, :office_type_id => 9, :name => "Mayor", :polity_id => 1, :polity_type => 'Municipality' },
+    { :id => 20, :office_type_id => 9,  :name => "Mayor", :polity_id => 2, :polity_type => 'Municipality' },
+    { :id => 21, :office_type_id => 9, :name => "Mayor", :polity_id => 3, :polity_type => 'Municipality' }
 ], :without_protection => true)
 
 

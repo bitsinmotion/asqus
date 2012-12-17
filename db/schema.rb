@@ -77,11 +77,12 @@ ActiveRecord::Schema.define(:version => 20121211053322) do
   end
 
   create_table "offices", :force => true do |t|
-    t.string   "name",        :null => false
-    t.integer  "polity_id",   :null => false
-    t.string   "polity_type", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "name",           :null => false
+    t.integer  "office_type_id", :null => false
+    t.integer  "polity_id",      :null => false
+    t.string   "polity_type",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "official_tenures", :force => true do |t|

@@ -1,4 +1,4 @@
-<h3>Offices</h3>
+<h3>Offices for <%= @polity %></h3>
 
 <table width=450>
   <tr>
@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Office', new_office_path %>
+<%= link_to 'New Office', new_office_path(:polity_type => params[:polity_type], :polity_id => params[:polity_id]) %>

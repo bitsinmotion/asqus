@@ -15,7 +15,16 @@ class OfficesController < ApplicationController
   # GET /offices.json
 
   def index
-    @offices = Office.all
+
+    polity_type = params[:polity_type]
+    polity_id = params[:polity_id]
+        
+    if (polity_type.nil?)
+      @offices = Office.all
+    else
+      @polity =  eval(polity_type).find(polity_id) 
+      @offices = Office.where( :polity_type => polity_type, :polity_id => polity_id )
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,7 +57,13 @@ class OfficesController < ApplicationController
   # GET /offices/new
   # GET /offices/new.json
   def new
+
+
     @office = Office.new
+    @office.polity_type = params[:polity_type]
+    @office.polity_id = params[:polity_id]
+    
+    @office_types = OfficeType.where( :polity_type => params[:polity_type] )
 
     respond_to do |format|
       format.html # new.html.erb
@@ -58,7 +73,10 @@ class OfficesController < ApplicationController
 
   # GET /offices/1/edit
   def edit
+
     @office = Office.find(params[:id])
+    @office_types = OfficeType.where( :polity_type => @office.polity_type )
+
   end
 
   # POST /offices
