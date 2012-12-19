@@ -3,8 +3,9 @@
 
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.input :poller_type %>
-    <%= f.input :poller_id %>
+    <%= f.input :poller_type, :as => :hidden, :input_html => { :value => @issue.poller_type } %>
+    <%= f.input :poller_id, :as => :hidden, :input_html => { :value => @issue.poller_id } %>
+    <%= f.input :tag_string, :label => "Tags"%>
   </div>
 
   <div class="form-actions">

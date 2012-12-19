@@ -24,7 +24,12 @@ class QuickPollsController < ApplicationController
   # GET /quick_polls/new
   # GET /quick_polls/new.json
   def new
+
     @quick_poll = QuickPoll.new
+    
+
+    @issues = Issue.where( :poller_type => params[:poller_type], :poller_id => params[:poller_id] )
+
     5.times { @quick_poll.quick_poll_options.build }
     respond_to do |format|
       format.html # new.html.erb

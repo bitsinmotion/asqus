@@ -32,17 +32,6 @@ class OfficesController < ApplicationController
     end
   end
 
-# todo: use this code instead once nested resource routing straightened out
-#  def index
-#    @polity = find_polity
-#    @offices = @polity.offices
-#
-#    respond_to do |format|
-#      format.html # index.html.erb
-#      format.json { render json: @offices }
-#    end
-#  end
-
   # GET /offices/1
   # GET /offices/1.json
   def show
@@ -57,7 +46,6 @@ class OfficesController < ApplicationController
   # GET /offices/new
   # GET /offices/new.json
   def new
-
 
     @office = Office.new
     @office.polity_type = params[:polity_type]

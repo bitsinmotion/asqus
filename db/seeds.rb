@@ -177,7 +177,7 @@ user2.add_role :VIP
 puts 'ADDING USERS TO GROUPS'
 
 UserGroup.create([
- { :id => 1, :user_id => user1.id, :group_type => "Official", :group_id => 15 }
+ { :id => 1, :user_id => user1.id, :group_type => "Office", :group_id => 15 }
 ], :without_protection => true )
 
 

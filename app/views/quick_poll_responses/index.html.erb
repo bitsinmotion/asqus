@@ -1,27 +1,23 @@
-<h3>Listing Quick Poll Responses</h3>
+<h3>Quick Poll Responses</h3>
 
-<table>
+Todo: summarize this data rather than present it raw, obviously.
+<p>
+<b><%= @quick_poll.title %></b>
+<p>
+<table width=400>
   <tr>
-    <th>Quick poll</th>
     <th>User</th>
-    <th>Value</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Response Value</th>
   </tr>
 
 <% @quick_poll_responses.each do |quick_poll_response| %>
   <tr>
-    <td><%= quick_poll_response.quick_poll_id %></td>
     <td><%= quick_poll_response.user_id %></td>
     <td><%= quick_poll_response.value %></td>
-    <td><%= link_to 'Show', quick_poll_response %></td>
-    <td><%= link_to 'Edit', edit_quick_poll_response_path(quick_poll_response) %></td>
-    <td><%= link_to 'Destroy', quick_poll_response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Quick poll response', new_quick_poll_response_path %>
+

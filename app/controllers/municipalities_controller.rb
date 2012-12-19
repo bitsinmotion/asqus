@@ -3,7 +3,11 @@ class MunicipalitiesController < ApplicationController
   # GET /municipalities
   # GET /municipalities.json
   def index
-    @municipalities = Municipality.all
+
+    state_id = params[:state_id]
+
+    @state = State.find( state_id )
+    @municipalities = Municipality.where( :state_id => state_id )
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +29,9 @@ class MunicipalitiesController < ApplicationController
   # GET /municipalities/new
   # GET /municipalities/new.json
   def new
+
     @municipality = Municipality.new
+    @municipality.state_id = params[:state_id]
 
     respond_to do |format|
       format.html # new.html.erb

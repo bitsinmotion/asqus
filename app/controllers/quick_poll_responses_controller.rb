@@ -2,7 +2,9 @@ class QuickPollResponsesController < ApplicationController
   # GET /quick_poll_responses
   # GET /quick_poll_responses.json
   def index
-    @quick_poll_responses = QuickPollResponse.all
+
+    @quick_poll = QuickPoll.find(params[:quick_poll_id])
+    @quick_poll_responses = QuickPollResponse.where(:quick_poll_id => params[:quick_poll_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -57,5 +59,7 @@ class QuickPollResponsesController < ApplicationController
     end
 
     redirect_to "/"
-
   end
+
+
+end

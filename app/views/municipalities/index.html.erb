@@ -1,4 +1,4 @@
-<h3>Municipalities</h3>
+<h3><%= @state.name %> Municipalities</h3>
 
 <table width=400>
   <tr>
@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Municipality', new_municipality_path %>
+<%= link_to 'New Municipality', new_municipality_path( :state_id => @state.id ) %>

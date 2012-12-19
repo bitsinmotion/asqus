@@ -14,4 +14,8 @@ class Office < ActiveRecord::Base
     return name
   end
 
+  def full_name
+    return name + ", " + polity.to_s
+  end
+
 end

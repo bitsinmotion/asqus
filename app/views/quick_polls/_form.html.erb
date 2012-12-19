@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :issue %> (to do: allow creation of new issues)<p>
+    <%= f.association :issue, :collection => @issues %> (to do: allow creation of new issues)<p>
     <%= f.input :title %>
     <%= f.input :body %>
     <%= f.association :quick_poll_type %>

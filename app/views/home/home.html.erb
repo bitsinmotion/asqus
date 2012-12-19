@@ -1,9 +1,13 @@
-<h3>Home</h3>
 
+<% user_office = offices_for_user(current_user.id).first %>
+<% if !user_office.nil? %>
+<b>Administration: <%= link_to user_office.full_name, user_office %></b>
+<ul>
+<% new_qp_path = new_quick_poll_path + "?poller_type=Office&poller_id=" + user_office.id.to_s %>
+<li><a href="<%=new_qp_path %>">New Quick Poll</a>
+</ul>
 
-
-<h4>You Administrate</h4>
-
+<% end %>
 
 
 <h4>Your elected officials</h4>
@@ -33,6 +37,22 @@
 <tr><td><%= office %></td><td><%= municipal_officer.name if !municipal_officer.nil?%></td></tr>
 <% end %>
 
+</table>
 
+<h4>Open Polls</h4>
 
+<table width=400>
+<% @open_quick_polls.each do |poll| %>
+<% path = new_quick_poll_response_path + "?quick_poll_id=" + poll.id.to_s %>
+<tr><td><a href=<%=path%> ><%= poll.title %></td></tr>
+<% end %>
+</table>
+
+<h4>Answered Polls</h4>
+
+<table width=400>
+<% @answered_quick_polls.each do |poll| %>
+<% path = quick_poll_responses_path + "?quick_poll_id=" + poll.id.to_s %>
+<tr><td><a href=<%=path%> ><%= poll.title %></td></tr>
+<% end %>
 </table>

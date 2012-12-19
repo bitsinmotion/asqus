@@ -1,4 +1,4 @@
-<h1>Listing issues</h1>
+<h3>Issues for <%= @poller.full_name %></h3>
 
 <table>
   <tr>
@@ -13,8 +13,6 @@
 <% @issues.each do |issue| %>
   <tr>
     <td><%= issue.title %></td>
-    <td><%= issue.poller_type %></td>
-    <td><%= issue.poller_id %></td>
     <td><%= link_to 'Show', issue %></td>
     <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
     <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Issue', new_issue_path %>
+<%= link_to 'New Issue', new_issue_path(:poller_type => params[:poller_type], :poller_id => params[:poller_id]) %>

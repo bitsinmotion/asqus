@@ -2,7 +2,9 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    @issues = Issue.all
+
+    @poller = eval(params[:poller_type]).find(params[:poller_id])    
+    @issues = Issue.where( :poller_type => params[:poller_type], :poller_id => params[:poller_id] );
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,15 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
+
     @issue = Issue.find(params[:id])
+
+    # concatenate all tags into a single editable field
+
+    @issue.tag_string = ""
+    @issue.tags.each do |tag|
+      tag_string += tag.text + ' '
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +34,10 @@ class IssuesController < ApplicationController
   # GET /issues/new
   # GET /issues/new.json
   def new
+
     @issue = Issue.new
+    @issue.poller_type = params[:poller_type]
+    @issue.poller_id = params[:poller_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +48,28 @@ class IssuesController < ApplicationController
   # GET /issues/1/edit
   def edit
     @issue = Issue.find(params[:id])
+
+    # concatenate all the tags into a single string for editing
+
+    logger.debug "concatenating tags"
+
+    @issue.tag_string = ""
+    @issue.tags.each do |tag|
+      logger.debug "found tag"     
+      @issue.tag_string += tag.tag + " "
+    end
+
+
   end
 
   # POST /issues
   # POST /issues.json
   def create
-    @issue = Issue.new(params[:issue])
+
+    issue_hash = params[:issue]
+    issue_hash[:tags_attributes] = [ {:tag => "go"}, {:tag => "fish"} ]
+
+    @issue = Issue.new(issue_hash)
 
     respond_to do |format|
       if @issue.save
