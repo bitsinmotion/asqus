@@ -22,7 +22,7 @@ class IssuesController < ApplicationController
 
     @issue.tag_string = ""
     @issue.tags.each do |tag|
-      tag_string += tag.text + ' '
+      @issue.tag_string += tag.tag + ' '
     end
 
     respond_to do |format|
@@ -51,8 +51,6 @@ class IssuesController < ApplicationController
 
     # concatenate all the tags into a single string for editing
 
-    logger.debug "concatenating tags"
-
     @issue.tag_string = ""
     @issue.tags.each do |tag|
       logger.debug "found tag"     
@@ -67,9 +65,15 @@ class IssuesController < ApplicationController
   def create
 
     issue_hash = params[:issue]
-    issue_hash[:tags_attributes] = [ {:tag => "go"}, {:tag => "fish"} ]
+
+    logger.debug issue_hash
 
     @issue = Issue.new(issue_hash)
+
+    tags = issue_hash[:tag_string].split(' ')
+    tags.each do |tag|
+      @issue.tags.build( :tag => tag )
+    end 
 
     respond_to do |format|
       if @issue.save

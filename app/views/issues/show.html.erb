@@ -6,13 +6,13 @@
 </p>
 
 <p>
-  <b>Poller type:</b>
-  <%= @issue.poller_type %>
-</p>
+  <b>Tags:</b>
+  <% comma = "" %>
+  <% @issue.tags.each do |tag| %>
+  <%= comma + tag.tag %>
+  <% comma = ", " %>
+  <% end %>
 
-<p>
-  <b>Poller:</b>
-  <%= @issue.poller_id %>
 </p>
 
 

@@ -3,6 +3,8 @@
 <% if !user_office.nil? %>
 <b>Administration: <%= link_to user_office.full_name, user_office %></b>
 <ul>
+<% new_i_path = new_issue_path + "?poller_type=Office&poller_id=" + user_office.id.to_s %>
+<li><a href="<%=new_i_path %>">New Issue</a>
 <% new_qp_path = new_quick_poll_path + "?poller_type=Office&poller_id=" + user_office.id.to_s %>
 <li><a href="<%=new_qp_path %>">New Quick Poll</a>
 </ul>

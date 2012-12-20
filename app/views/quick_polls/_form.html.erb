@@ -4,19 +4,21 @@
   <div class="form-inputs">
     <%= f.association :issue, :collection => @issues %> (to do: allow creation of new issues)<p>
     <%= f.input :title %>
-    <%= f.input :body %>
+    <%= f.input :body, :input_html => {:rows => 4, :columns => 180 } %>
     <%= f.association :quick_poll_type %>
     <%= f.input :start_time, :as => :date %>
     <%= f.input :end_time, :as => :date %>
     <%= f.input :poll_workflow_state_id, :as => :hidden, :input_html => { :value => 0 } %>
-
+    <%= f.input :poller_type, :as => :hidden, :input_html => { :value => @poller_type } %>
+    <%= f.input :poller_id, :as => :hidden, :input_html => { :value => @poller_id } %>
+    <p><b>Answer Options</b> (to do: javascript for standard options )<p> 
     <% i = 1 %>
     <%= f.fields_for :quick_poll_options do |builder| %>
-      <%= builder.input :value, :as => :hidden, :input_html => { :value => i } %>
+      <%= builder.input :value, :as => :hidden, :input_html => { :value => i } %> 
       <%# i have no idea why manually putting the fucking quick poll id in as a hidden field %>
       <%# below is necessary, except that rails sucks and doesn't work without it %>
       <%= builder.input :quick_poll_id, :as => :hidden, :input_html => { :value => @quick_poll.id } %> 
-      <%= builder.input :text%>
+      <%= builder.input :text, :label => "Option " + i.to_s %>
       <% i = i + 1 %>
     <% end %>
     

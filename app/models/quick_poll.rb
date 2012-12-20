@@ -7,8 +7,8 @@ class QuickPoll < ActiveRecord::Base
   has_many :quick_poll_options
   has_many :quick_poll_responses
 
-  attr_accessible :body, :end_time, :issue_id, :poll_workflow_state_id, :start_time, :title, :quick_poll_type_id, :quick_poll_options_attributes
-  attr_accessible :poll_workflow_state_id
+  attr_accessible :body, :end_time, :issue_id, :poll_workflow_state_id, :start_time, :title, :quick_poll_type_id, :quick_poll_options_attributes, :poller_type, :poller_id
+  attr_accessor :poller_type, :poller_id 
 
   accepts_nested_attributes_for :quick_poll_options, :allow_destroy => true, :reject_if => lambda { |o| o[:text].blank? }
 

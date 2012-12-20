@@ -26,9 +26,10 @@ class QuickPollsController < ApplicationController
   def new
 
     @quick_poll = QuickPoll.new
+    @poller_type = params[:poller_type]
+    @poller_id = params[:poller_id]
     
-
-    @issues = Issue.where( :poller_type => params[:poller_type], :poller_id => params[:poller_id] )
+    @issues = Issue.where( :poller_type => @poller_type, :poller_id => @poller_id )
 
     5.times { @quick_poll.quick_poll_options.build }
     respond_to do |format|
@@ -40,6 +41,10 @@ class QuickPollsController < ApplicationController
   # GET /quick_polls/1/edit
   def edit
     @quick_poll = QuickPoll.find(params[:id])
+    @poller_type = @quick_poll.issue.poller_type
+    @poller_id = @quick_poll.issue.poller_id
+    @issues = Issue.where( :poller_type => @poller_type, :poller_id => @poller_id )
+
   end
 
   # POST /quick_polls
@@ -47,9 +52,7 @@ class QuickPollsController < ApplicationController
   def create
 
     logger.info params[:quick_poll]
-
     @quick_poll = QuickPoll.new(params[:quick_poll])
-
 
     respond_to do |format|
       if @quick_poll.save
@@ -57,6 +60,9 @@ class QuickPollsController < ApplicationController
         format.json { render json: @quick_poll, status: :created, location: @quick_poll }
       else
         logger.debug @quick_poll.errors.full_messages
+        @poller_type = params[:quick_poll][:poller_type]
+        @poller_id = params[:quick_poll][:poller_id]
+        @issues = Issue.where( :poller_type => @poller_type, :poller_id => @poller_id )
         format.html { render action: "new" }
         format.json { render json: @quick_poll.errors, status: :unprocessable_entity }
       end
