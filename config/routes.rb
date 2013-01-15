@@ -1,6 +1,6 @@
 Asqus::Application.routes.draw do
   
-  resources :states
+
 
   resources :quick_poll_types
 
@@ -41,10 +41,9 @@ Asqus::Application.routes.draw do
   resources :poll_questions
 
 
-  resources :official_tenures
 
 
-  resources :offices
+  resources :offices, :only => [:index, :show]
 
 
   resources :state_senate_districts
@@ -63,10 +62,17 @@ Asqus::Application.routes.draw do
     resources :wards
   end
 
+  namespace :admin do
+    resources :officials
+    resources :offices
+    resources :official_tenures
+    resources :states
+  end
+  
 
   resources :poll_workflow_states
   resources :polls
-  resources :officials
+  resources :officials, :only => [:index, :show]
 
  
   authenticated :user do

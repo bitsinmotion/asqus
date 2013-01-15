@@ -1,0 +1,22 @@
+<h3>Select a State</h3>
+
+<table width=400>
+  <tr>
+    <th></th>
+    <th>State</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @states.each do |state| %>
+  <tr>
+    <td><%= state.abbreviation %></td>
+    <td><%= link_to state.name, admin_state_path(state) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

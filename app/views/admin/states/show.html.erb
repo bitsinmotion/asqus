@@ -20,7 +20,7 @@
   <tr>
     <td><%= office %></td>
     <td><%= if !incumbent.nil?
-              link_to incumbent.name, incumbent
+              link_to incumbent.name, admin_official_path(incumbent, :state_id => @state.id )
             end            
          %>
    </td>
@@ -37,7 +37,7 @@
    <tr><td><%= office.polity %></td><td><%= office %></td>
      <td>
        <%= if !incumbent.nil?
-         link_to incumbent.name, incumbent
+         link_to incumbent.name, admin_official_path(incumbent, :state_id => @state.id )
          end
        %> 
      </td>
@@ -48,4 +48,4 @@
 <h4>To do: something for state legislative offices</h4>
 
 
-<%= link_to 'Back', states_path %>
+<%= link_to 'Back', admin_states_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211053322) do
+ActiveRecord::Schema.define(:version => 20121231000002) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -100,10 +100,11 @@ ActiveRecord::Schema.define(:version => 20121211053322) do
   add_index "official_tenures", ["to_date"], :name => "index_official_tenures_on_to_date"
 
   create_table "officials", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",            :null => false
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "photo_extension"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "poll_options", :force => true do |t|
@@ -159,6 +160,22 @@ ActiveRecord::Schema.define(:version => 20121211053322) do
   add_index "polls", ["issue_id"], :name => "index_polls_on_issue_id"
   add_index "polls", ["start_time"], :name => "index_polls_on_start_time"
 
+  create_table "questions", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "user_id"
+    t.integer  "up_cache"
+    t.integer  "down_cache"
+    t.float    "rank_value"
+    t.integer  "official_id"
+    t.float    "controversy_value"
+  end
+
+  add_index "questions", ["official_id", "created_at"], :name => "index_questions_on_official_id_and_created_at"
+  add_index "questions", ["user_id", "created_at"], :name => "index_questions_on_user_id_and_created_at"
+
   create_table "quick_poll_options", :force => true do |t|
     t.string   "text"
     t.integer  "quick_poll_id"
@@ -203,6 +220,17 @@ ActiveRecord::Schema.define(:version => 20121211053322) do
   add_index "quick_polls", ["end_time"], :name => "index_quick_polls_on_end_time"
   add_index "quick_polls", ["issue_id"], :name => "index_quick_polls_on_issue_id"
   add_index "quick_polls", ["start_time"], :name => "index_quick_polls_on_start_time"
+
+  create_table "responses", :force => true do |t|
+    t.text     "body"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "question_id"
+    t.integer  "user_id"
+  end
+
+  add_index "responses", ["question_id", "created_at"], :name => "index_responses_on_question_id_and_created_at"
+  add_index "responses", ["user_id", "created_at"], :name => "index_responses_on_user_id_and_created_at"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -273,6 +301,18 @@ ActiveRecord::Schema.define(:version => 20121211053322) do
 
   add_index "tags", ["tag", "context", "taggable_type", "taggable_id"], :name => "index_tags_on_tag_and_context_and_taggable_type_and_taggable_id", :unique => true
   add_index "tags", ["taggable_type", "taggable_id"], :name => "index_tags_on_taggable_type_and_taggable_id"
+
+  create_table "uq_relations", :force => true do |t|
+    t.integer  "user_id",     :null => false
+    t.integer  "question_id", :null => false
+    t.boolean  "yaynay",      :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "uq_relations", ["question_id", "user_id"], :name => "index_uq_relations_on_question_id_and_user_id", :unique => true
+  add_index "uq_relations", ["question_id"], :name => "index_uq_relations_on_question_id"
+  add_index "uq_relations", ["user_id"], :name => "index_uq_relations_on_user_id"
 
   create_table "user_groups", :force => true do |t|
     t.integer  "user_id",                          :null => false

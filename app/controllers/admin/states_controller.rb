@@ -1,4 +1,5 @@
-class StatesController < ApplicationController
+class Admin::StatesController < ApplicationController
+  
   # GET /states
   # GET /states.json
   def index

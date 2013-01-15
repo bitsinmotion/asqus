@@ -23,3 +23,5 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "omniauth"
 gem "omniauth-facebook"
 gem "oauth2"
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'

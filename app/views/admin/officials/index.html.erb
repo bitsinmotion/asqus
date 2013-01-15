@@ -14,10 +14,12 @@
     <td><%= official.name %></td>
     <td><%= official.email %></td>
     <td><%= link_to 'Show', official %></td>
+    <td><%= link_to 'Edit', edit_admin_official_path(official) %></td>
+    <td><%= link_to 'Destroy', [ :admin, official], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-
+<%= link_to 'New Official', new_admin_official_path %>
